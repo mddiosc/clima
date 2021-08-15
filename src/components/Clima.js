@@ -18,12 +18,12 @@ const Clima = ({ resultado }) => {
           {parseFloat(main.temp - kelvin, 10).toFixed(2)} <span>&#x2103;</span>
         </p>
         <p>
-          Temperatura Máxima
+          Temperatura Máxima{' '}
           {parseFloat(main.temp_max - kelvin, 10).toFixed(2)}{" "}
           <span>&#x2103;</span>
         </p>
         <p>
-          Temperatura Mínima
+          Temperatura Mínima{' '}
           {parseFloat(main.temp_min - kelvin, 10).toFixed(2)}{" "}
           <span>&#x2103;</span>
         </p>
