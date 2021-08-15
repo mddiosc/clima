@@ -1,5 +1,5 @@
 import React from "react";
-import PropTypes from "propTypes";
+import PropTypes from "prop-types";
 
 const Clima = ({ resultado }) => {
   const { name, main } = resultado;

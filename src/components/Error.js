@@ -1,5 +1,5 @@
 import React from "react";
-import PropTypes from "propTypes";
+import PropTypes from "prop-types";
 
 const Error = ({ mensaje }) => {
   return <p className="red darken-4 error">{mensaje}</p>;

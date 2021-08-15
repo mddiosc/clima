@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Error from "./Error";
-import PropTypes from "propTypes";
+import PropTypes from "prop-types";
 
 const Formulario = ({ busqueda, guardarBusqueda, guardarConsultar }) => {
   const [error, guardarError] = useState(false);
