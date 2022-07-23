@@ -12,31 +12,35 @@ nav .brand-logo {
   color: white;
 }
 
-.input-field input[type=text]:focus + label {
+.input-field input[type="text"]:focus + label {
   color: white;
-} 
+}
 
-.input-field input[type=text]:focus {
+.input-field input[type="text"]:focus {
   border-bottom: 1px solid white;
   box-shadow: 0 1px 0 0 #000;
 }
 
-input[type=text]:not(.browser-default) {
+input[type="text"]:not(.browser-default) {
   border-bottom: 1px solid white;
   color: white;
 }
-input[type=text]:not(.browser-default):focus:not([readonly]) {
+input[type="text"]:not(.browser-default):focus:not([readonly]) {
   border-bottom: 1px solid white;
   -webkit-box-shadow: 0 1px 0 0 white;
   box-shadow: 0 1px 0 0 white;
 }
-input[type=text]:not(.browser-default):focus:not([readonly]) + label {
+input[type="text"]:not(.browser-default):focus:not([readonly]) + label {
   color: white;
 }
 
 .contenedor-form {
   padding: 3rem 0 1px 0;
   background-color: #03a9f4;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 .mensaje {
   text-align: center;
@@ -46,8 +50,8 @@ input[type=text]:not(.browser-default):focus:not([readonly]) + label {
   width: 100%;
 }
 .error {
-  padding: 1rem!important;
-  color:white;
+  padding: 1rem !important;
+  color: white;
   margin-top: 3rem;
   text-align: center;
   text-emphasis: left;
@@ -61,19 +65,19 @@ input[type=text]:not(.browser-default):focus:not([readonly]) + label {
   font-size: 1.4rem;
 }
 .temperatura {
-  font-size: 4rem!important
+  font-size: 4rem !important;
 }
 .temperatura span {
-  font-size: 2rem!important;
+  font-size: 2rem !important;
   vertical-align: super;
 }
 
 .btn-block {
-  display: block!important;
+  display: block !important;
 }
 
 .error {
-  padding: 1rem!important;
-  text-align: center!important;
-  color: #FFF!important;
+  padding: 1rem !important;
+  text-align: center !important;
+  color: #fff !important;
 }

@@ -19,17 +19,17 @@ function App() {
   useEffect(() => {
     const consultarApi = async () => {
       if (consultar) {
-        const appId = "caffdb17b8e666e8a6999de6dfc40ba4";
+        const appId = process.env.REACT_APP_API_KEY_WEATHER;
         const url = `https://api.openweathermap.org/data/2.5/weather?q=${ciudad},${pais}&appid=${appId}`;
 
         const respuesta = await fetch(url);
-        const resultado = await respuesta.json();
-        if (resultado.cod === '404') {
+        const result = await respuesta.json();
+        if (result.cod === "404") {
           guardarError(true);
         } else {
           guardarError(false);
         }
-        guardarResultado(resultado);
+        guardarResultado(result);
         guardarConsultar(false);
       }
     };
