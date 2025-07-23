@@ -64,7 +64,14 @@ function App(): JSX.Element {
 
   const renderContent = (): JSX.Element => {
     if (isLoading) {
-      return <div className="card-panel white col s12"><p>Loading...</p></div>;
+      return (
+        <div className="bg-white rounded-lg shadow-lg p-6">
+          <div className="flex items-center justify-center">
+            <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-sky-600"></div>
+            <p className="ml-3 text-gray-600">Loading...</p>
+          </div>
+        </div>
+      );
     }
     
     if (hasError) {
@@ -75,26 +82,24 @@ function App(): JSX.Element {
   };
 
   return (
-    <>
+    <div className="min-h-screen bg-gradient-to-br from-sky-400 via-sky-500 to-sky-600">
       <Header title="Weather React App" />
 
-      <div className="form-container">
-        <div className="container">
-          <div className="row">
-            <div className="col m6 s12">
-              <Form
-                searchData={searchData}
-                setSearchData={setSearchData}
-                setQuery={setShouldQuery}
-              />
-            </div>
-            <div className="col m6 s12">
-              {renderContent()}
-            </div>
+      <div className="container mx-auto px-4 py-8">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-6xl mx-auto">
+          <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6 shadow-xl border border-white/20">
+            <Form
+              searchData={searchData}
+              setSearchData={setSearchData}
+              setQuery={setShouldQuery}
+            />
+          </div>
+          <div className="flex items-start">
+            {renderContent()}
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 }
 

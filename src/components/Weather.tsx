@@ -15,20 +15,29 @@ const Weather = ({ weatherData }: WeatherProps): JSX.Element | null => {
   };
 
   return (
-    <div className="card-panel white col s12">
-      <div className="black-text">
-        <h2>Weather in {name}</h2>
-        <p className="temperatura">
-          {formatTemperature(main!.temp)} <span>&#x2103;</span>
-        </p>
-        <p>
-          Max Temperature: {formatTemperature(main!.temp_max)}{" "}
-          <span>&#x2103;</span>
-        </p>
-        <p>
-          Min Temperature: {formatTemperature(main!.temp_min)}{" "}
-          <span>&#x2103;</span>
-        </p>
+    <div className="bg-white rounded-lg shadow-lg p-6 text-gray-800">
+      <h2 className="text-2xl font-bold text-center mb-6 text-gray-700">
+        Weather in {name}
+      </h2>
+      
+      <div className="text-center mb-4">
+        <div className="text-6xl font-light text-sky-600 mb-2">
+          {formatTemperature(main!.temp)}
+          <span className="text-2xl align-top">°C</span>
+        </div>
+      </div>
+      
+      <div className="grid grid-cols-1 gap-3 text-center">
+        <div className="bg-sky-50 rounded-lg p-3">
+          <p className="text-lg text-gray-600">
+            <span className="font-semibold">Max:</span> {formatTemperature(main!.temp_max)}°C
+          </p>
+        </div>
+        <div className="bg-sky-50 rounded-lg p-3">
+          <p className="text-lg text-gray-600">
+            <span className="font-semibold">Min:</span> {formatTemperature(main!.temp_min)}°C
+          </p>
+        </div>
       </div>
     </div>
   );
