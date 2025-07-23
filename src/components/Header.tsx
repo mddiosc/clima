@@ -1,20 +1,15 @@
-import React from "react";
-import PropTypes from "prop-types";
+import { HeaderProps } from "../types";
 
-const Header = ({ titulo }) => {
+const Header = ({ title }: HeaderProps): JSX.Element => {
   return (
     <nav>
       <div className="nav-wrapper light-blue darken-2">
         <a href="#!" className="brand-logo">
-          {titulo}
+          {title}
         </a>
       </div>
     </nav>
   );
-};
-
-Header.propTypes = {
-  titulo: PropTypes.string.isRequired,
 };
 
 export default Header;

@@ -1,70 +1,121 @@
-# Getting Started with Create React App
+# 🌤️ Weather React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A modern weather application built with React 18, TypeScript, and Vite. Get real-time weather information for cities around the world using the OpenWeatherMap API.
 
-## Available Scripts
+## ✨ Features
 
-In the project directory, you can run:
+- 🌍 Search weather by city and country
+- 🌡️ Display current temperature, min/max temperatures
+- 📱 Responsive design with Materialize CSS
+- ⚡ Lightning-fast development with Vite
+- 🔒 Type-safe with TypeScript
+- 🎨 Clean, modern UI
 
-### `yarn start`
+## 🚀 Getting Started
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+### Prerequisites
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+- Node.js (v16 or higher)
+- npm or yarn
+- OpenWeatherMap API key ([Get one here](https://openweathermap.org/api))
 
-### `yarn test`
+### Installation
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+1. **Clone the repository**
+   ```bash
+   git clone <repository-url>
+   cd clima
+   ```
 
-### `yarn build`
+2. **Install dependencies**
+   ```bash
+   npm install
+   ```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+3. **Set up environment variables**
+   ```bash
+   cp .env.example .env.local
+   ```
+   
+   Then edit `.env.local` and add your OpenWeatherMap API key:
+   ```env
+   VITE_API_KEY_WEATHER=your_api_key_here
+   ```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+4. **Start the development server**
+   ```bash
+   npm run dev
+   ```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+5. **Open your browser**
+   Navigate to [http://localhost:3000](http://localhost:3000)
 
-### `yarn eject`
+## 📝 Available Scripts
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+- `npm run dev` - Start development server
+- `npm run build` - Build for production
+- `npm run preview` - Preview production build
+- `npm run lint` - Run ESLint
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## 🏗️ Project Structure
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+```
+src/
+  ├── components/
+  │   ├── Header.tsx      # App header component
+  │   ├── Form.tsx        # Search form component
+  │   ├── Weather.tsx     # Weather display component
+  │   └── Error.tsx       # Error message component
+  ├── types/
+  │   └── index.ts        # TypeScript type definitions
+  ├── App.tsx             # Main app component
+  ├── main.tsx            # App entry point
+  ├── index.css           # Global styles
+  └── vite-env.d.ts       # Vite environment types
+```
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+## 🛠️ Tech Stack
 
-## Learn More
+- **React 18** - UI library
+- **TypeScript** - Type safety
+- **Vite** - Build tool and dev server
+- **Materialize CSS** - UI framework
+- **OpenWeatherMap API** - Weather data
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## 🌐 Supported Countries
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+- United States (US)
+- Mexico (MX)
+- Argentina (AR)
+- Colombia (CO)
+- Costa Rica (CR)
+- Spain (ES)
+- Peru (PE)
 
-### Code Splitting
+## 📦 Build for Production
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+```bash
+npm run build
+```
 
-### Analyzing the Bundle Size
+The build artifacts will be stored in the `dist/` directory.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+## 🤝 Contributing
 
-### Making a Progressive Web App
+1. Fork the project
+2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+## 📄 License
 
-### Advanced Configuration
+This project is licensed under the MIT License.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+## 🔗 Links
 
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- [OpenWeatherMap API](https://openweathermap.org/api)
+- [React Documentation](https://reactjs.org/)
+- [Vite Documentation](https://vitejs.dev/)
+- [TypeScript Documentation](https://www.typescriptlang.org/)
+- [Materialize CSS](https://materializecss.com/)

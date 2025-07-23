@@ -3,6 +3,48 @@ body {
   padding: 0;
   font-family: sans-serif;
 }
+
+/* Select styles for better visibility */
+select.browser-default {
+  background-color: white;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 8px;
+  font-size: 16px;
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+select.browser-default:focus {
+  outline: none;
+  border-color: #03a9f4;
+  box-shadow: 0 0 5px rgba(3, 169, 244, 0.3);
+}
+
+/* Custom select styles to ensure visibility */
+select {
+  display: block !important;
+  width: 100% !important;
+  height: auto !important;
+  padding: 10px !important;
+  margin-bottom: 15px !important;
+  font-size: 16px !important;
+  background-color: white !important;
+  border: 1px solid #ccc !important;
+  border-radius: 4px !important;
+  color: #333 !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  position: relative !important;
+  z-index: 1 !important;
+}
+
+select:focus {
+  outline: none !important;
+  border-color: #03a9f4 !important;
+  box-shadow: 0 0 5px rgba(3, 169, 244, 0.3) !important;
+}
+
 nav .brand-logo {
   display: block;
   text-align: center;
@@ -34,7 +76,7 @@ input[type="text"]:not(.browser-default):focus:not([readonly]) + label {
   color: white;
 }
 
-.contenedor-form {
+.form-container {
   padding: 3rem 0 1px 0;
   background-color: #03a9f4;
   height: 100vh;
@@ -42,13 +84,16 @@ input[type="text"]:not(.browser-default):focus:not([readonly]) + label {
   flex-direction: column;
   justify-content: center;
 }
-.mensaje {
+
+.message {
   text-align: center;
   font-size: 2rem;
 }
-.buscador i {
+
+.search i {
   width: 100%;
 }
+
 .error {
   padding: 1rem !important;
   color: white;
@@ -56,17 +101,21 @@ input[type="text"]:not(.browser-default):focus:not([readonly]) + label {
   text-align: center;
   text-emphasis: left;
 }
+
 .card-panel h2 {
   font-size: 1.6rem;
   text-align: center;
 }
+
 .card-panel p {
   text-align: center;
   font-size: 1.4rem;
 }
+
 .temperatura {
   font-size: 4rem !important;
 }
+
 .temperatura span {
   font-size: 2rem !important;
   vertical-align: super;
