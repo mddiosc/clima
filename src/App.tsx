@@ -3,7 +3,7 @@ import Header from "./components/Header";
 import Form from "./components/Form";
 import Weather from "./components/Weather";
 import Error from "./components/Error";
-import { SearchData, WeatherData } from "./types";
+import { SearchData, WeatherData, ForecastData } from "./types";
 
 function App(): JSX.Element {
   const [searchData, setSearchData] = useState<SearchData>({
@@ -13,6 +13,7 @@ function App(): JSX.Element {
 
   const [shouldQuery, setShouldQuery] = useState<boolean>(false);
   const [weatherData, setWeatherData] = useState<WeatherData>({});
+  const [forecastData, setForecastData] = useState<ForecastData | undefined>(undefined);
   const [hasError, setHasError] = useState<boolean>(false);
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
@@ -35,23 +36,37 @@ function App(): JSX.Element {
             return;
           }
 
-          const url = `https://api.openweathermap.org/data/2.5/weather?q=${city},${country}&appid=${apiKey}`;
-
-          const response = await fetch(url);
-          const result: WeatherData = await response.json();
+          // Fetch current weather
+          const currentWeatherUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city},${country}&appid=${apiKey}`;
+          const currentResponse = await fetch(currentWeatherUrl);
+          const currentResult: WeatherData = await currentResponse.json();
           
-          if (result.cod === "404" || result.cod === 404) {
+          // Fetch 5-day forecast
+          const forecastUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${city},${country}&appid=${apiKey}`;
+          const forecastResponse = await fetch(forecastUrl);
+          const forecastResult: ForecastData = await forecastResponse.json();
+          
+          if (currentResult.cod === "404" || currentResult.cod === 404) {
             setHasError(true);
             setWeatherData({});
+            setForecastData(undefined);
           } else {
             setHasError(false);
-            setWeatherData(result);
+            setWeatherData(currentResult);
+            // Set forecast data if response is successful and has valid data
+            if (forecastResponse.ok && forecastResult.list && forecastResult.list.length > 0 && 
+                (forecastResult.cod === "200" || forecastResult.cod === 200 || !forecastResult.cod)) {
+              setForecastData(forecastResult);
+            } else {
+              setForecastData(undefined);
+            }
           }
           
         } catch (error) {
           console.error("Error fetching weather data:", error);
           setHasError(true);
           setWeatherData({});
+          setForecastData(undefined);
         } finally {
           setIsLoading(false);
           setShouldQuery(false);
@@ -78,7 +93,7 @@ function App(): JSX.Element {
       return <Error message="No results found or error occurred" />;
     }
     
-    return <Weather weatherData={weatherData} />;
+    return <Weather weatherData={weatherData} forecastData={forecastData} />;
   };
 
   return (
@@ -86,15 +101,15 @@ function App(): JSX.Element {
       <Header title="Weather React App" />
 
       <div className="container mx-auto px-4 py-8">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-6xl mx-auto">
-          <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6 shadow-xl border border-white/20">
+        <div className="grid grid-cols-1 xl:grid-cols-12 gap-8 max-w-7xl mx-auto">
+          <div className="xl:col-span-3 bg-white/10 backdrop-blur-sm rounded-xl p-6 shadow-xl border border-white/20">
             <Form
               searchData={searchData}
               setSearchData={setSearchData}
               setQuery={setShouldQuery}
             />
           </div>
-          <div className="flex items-start">
+          <div className="xl:col-span-9 flex items-start">
             {renderContent()}
           </div>
         </div>
