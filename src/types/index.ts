@@ -11,6 +11,9 @@ export interface WeatherData {
     temp_min: number;
     humidity: number;
     pressure: number;
+    feels_like?: number;
+    sea_level?: number;
+    grnd_level?: number;
   };
   weather?: Array<{
     main: string;
@@ -19,8 +22,52 @@ export interface WeatherData {
   }>;
   wind?: {
     speed: number;
+    deg?: number;
+    gust?: number;
+  };
+  visibility?: number;
+  clouds?: {
+    all: number;
+  };
+  sys?: {
+    sunrise: number;
+    sunset: number;
+  };
+  timezone?: number;
+  cod?: string | number;
+}
+
+export interface ForecastData {
+  list: Array<{
+    dt: number;
+    main: {
+      temp: number;
+      temp_max: number;
+      temp_min: number;
+      humidity: number;
+      pressure: number;
+      feels_like: number;
+    };
+    weather: Array<{
+      main: string;
+      description: string;
+      icon: string;
+    }>;
+    wind: {
+      speed: number;
+      deg: number;
+    };
+    visibility: number;
+    pop: number; // probability of precipitation
+    dt_txt: string;
+  }>;
+  city: {
+    name: string;
+    country: string;
+    timezone: number;
   };
   cod?: string | number;
+  message?: string;
 }
 
 export interface FormProps {
@@ -31,6 +78,7 @@ export interface FormProps {
 
 export interface WeatherProps {
   weatherData: WeatherData;
+  forecastData?: ForecastData;
 }
 
 export interface ErrorProps {
