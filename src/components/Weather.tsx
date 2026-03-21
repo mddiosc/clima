@@ -20,7 +20,7 @@ import {
 import TemperatureChart from "./TemperatureChart";
 import Forecast from "./Forecast";
 
-const Weather = ({ weatherData, forecastData }: WeatherProps): JSX.Element | null => {
+const Weather = ({ weatherData, forecastData }: WeatherProps): React.JSX.Element | null => {
   const { name, main, weather, wind, visibility, clouds, sys } = weatherData;
 
   if (!name) return null;
@@ -53,7 +53,7 @@ const Weather = ({ weatherData, forecastData }: WeatherProps): JSX.Element | nul
 
   // Get weather icon based on OpenWeatherMap icon code
   const getWeatherIcon = (iconCode: string) => {
-    const iconMap: { [key: string]: JSX.Element } = {
+    const iconMap: { [key: string]: React.JSX.Element } = {
       '01d': <Sun className="w-16 h-16 text-yellow-500" />, // clear sky day
       '01n': <Sun className="w-16 h-16 text-gray-400" />, // clear sky night
       '02d': <Cloud className="w-16 h-16 text-gray-500" />, // few clouds day

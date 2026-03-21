@@ -4,7 +4,7 @@ import Error from "./Error";
 import { FormProps } from "../types";
 import { MapPin } from "lucide-react";
 
-const Form = ({ searchData, setSearchData, setQuery }: FormProps): JSX.Element => {
+const Form = ({ searchData, setSearchData, setQuery }: FormProps): React.JSX.Element => {
   const [hasError, setHasError] = useState<boolean>(false);
   const [isGettingLocation, setIsGettingLocation] = useState<boolean>(false);
 

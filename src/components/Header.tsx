@@ -1,6 +1,6 @@
 import { HeaderProps } from "../types";
 
-const Header = ({ title }: HeaderProps): JSX.Element => {
+const Header = ({ title }: HeaderProps): React.JSX.Element => {
   return (
     <nav className="bg-sky-500 shadow-lg">
       <div className="container mx-auto px-4">

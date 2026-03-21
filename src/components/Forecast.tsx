@@ -15,7 +15,7 @@ interface ForecastProps {
   forecastData: ForecastData;
 }
 
-const Forecast = ({ forecastData }: ForecastProps): JSX.Element => {
+const Forecast = ({ forecastData }: ForecastProps): React.JSX.Element => {
   // Convert Kelvin to Celsius
   const kelvinToCelsius = (kelvin: number): number => {
     return Math.round(kelvin - 273.15);
@@ -23,7 +23,7 @@ const Forecast = ({ forecastData }: ForecastProps): JSX.Element => {
 
   // Get weather icon based on OpenWeatherMap icon code
   const getWeatherIcon = (iconCode: string) => {
-    const iconMap: { [key: string]: JSX.Element } = {
+    const iconMap: { [key: string]: React.JSX.Element } = {
       '01d': <Sun className="w-8 h-8 text-yellow-500" />,
       '01n': <Sun className="w-8 h-8 text-gray-400" />,
       '02d': <Cloud className="w-8 h-8 text-gray-500" />,

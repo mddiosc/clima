@@ -13,7 +13,7 @@ declare global {
   interface Window {
     M: {
       FormSelect: {
-        init: (element: HTMLSelectElement, options?: any) => void;
+        init: (element: HTMLSelectElement, options?: Record<string, unknown>) => void;
       };
     };
   }

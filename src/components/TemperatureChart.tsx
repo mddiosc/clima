@@ -1,4 +1,6 @@
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
+import type { TooltipContentProps } from 'recharts/types/component/Tooltip';
+import type { ValueType, NameType } from 'recharts/types/component/DefaultTooltipContent';
 import { format } from 'date-fns';
 import { ForecastData } from '../types';
 
@@ -13,7 +15,25 @@ interface ChartDataPoint {
   day: string;
 }
 
-const TemperatureChart = ({ forecastData }: TemperatureChartProps): JSX.Element => {
+
+const CustomTooltip = ({ active, payload, label }: TooltipContentProps<ValueType, NameType>): React.JSX.Element | null => {
+  if (active && payload && payload.length) {
+    return (
+      <div className="bg-white p-3 rounded-lg shadow-lg border">
+        <p className="font-semibold text-gray-700">{label}</p>
+        <p className="text-sky-600">
+          Temperature: {payload[0]?.value}°C
+        </p>
+        <p className="text-orange-500">
+          Feels like: {payload[1]?.value}°C
+        </p>
+      </div>
+    );
+  }
+  return null;
+};
+
+const TemperatureChart = ({ forecastData }: TemperatureChartProps): React.JSX.Element => {
   // Convert Kelvin to Celsius
   const kelvinToCelsius = (kelvin: number): number => {
     return Math.round(kelvin - 273.15);
@@ -29,23 +49,6 @@ const TemperatureChart = ({ forecastData }: TemperatureChartProps): JSX.Element 
       feels_like: kelvinToCelsius(item.main.feels_like),
       day: format(new Date(item.dt * 1000), 'MMM dd'),
     }));
-
-  const CustomTooltip = ({ active, payload, label }: any) => {
-    if (active && payload && payload.length) {
-      return (
-        <div className="bg-white p-3 rounded-lg shadow-lg border">
-          <p className="font-semibold text-gray-700">{label}</p>
-          <p className="text-sky-600">
-            Temperature: {payload[0].value}°C
-          </p>
-          <p className="text-orange-500">
-            Feels like: {payload[1].value}°C
-          </p>
-        </div>
-      );
-    }
-    return null;
-  };
 
   return (
     <div className="p-6">
@@ -66,7 +69,7 @@ const TemperatureChart = ({ forecastData }: TemperatureChartProps): JSX.Element 
             tickLine={false}
             className="text-gray-600"
           />
-          <Tooltip content={<CustomTooltip />} />
+          <Tooltip content={CustomTooltip} />
           <Line 
             type="monotone" 
             dataKey="temp" 

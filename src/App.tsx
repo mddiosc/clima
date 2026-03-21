@@ -5,7 +5,7 @@ import Weather from "./components/Weather";
 import Error from "./components/Error";
 import { SearchData, WeatherData, ForecastData } from "./types";
 
-function App(): JSX.Element {
+function App(): React.JSX.Element {
   const [searchData, setSearchData] = useState<SearchData>({
     city: "",
     country: "",
@@ -77,7 +77,7 @@ function App(): JSX.Element {
     fetchWeatherData();
   }, [city, country, shouldQuery]);
 
-  const renderContent = (): JSX.Element => {
+  const renderContent = (): React.JSX.Element => {
     if (isLoading) {
       return (
         <div className="bg-white rounded-lg shadow-lg p-6">
