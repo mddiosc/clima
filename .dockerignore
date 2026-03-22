@@ -1,0 +1,8 @@
+node_modules
+dist
+.env*
+.git
+.gitignore
+README.md
+CHANGELOG.md
+TECHNICAL_DOCUMENTATION.md
