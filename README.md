@@ -240,6 +240,20 @@ The app structure supports easy internationalization:
 
 The app can be deployed to various platforms:
 
+### Docker / Dokploy (important for Vite env vars)
+
+This project uses Vite, so `VITE_*` variables are injected at **build time**, not at runtime.
+
+- Set `VITE_API_KEY_WEATHER` as a **build argument** in Dokploy.
+- Example Docker build command:
+
+```bash
+docker build --build-arg VITE_API_KEY_WEATHER=your_openweathermap_api_key -t clima .
+```
+
+- In Dokploy, configure build args with key: `VITE_API_KEY_WEATHER` and your value.
+- The provided `Dockerfile` fails the build if the key is missing to avoid silent broken deploys.
+
 ### Vercel (Recommended)
 ```bash
 npm install -g vercel

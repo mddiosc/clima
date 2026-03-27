@@ -3,6 +3,9 @@ FROM node:20-alpine AS builder
 
 WORKDIR /app
 
+ARG VITE_API_KEY_WEATHER
+ENV VITE_API_KEY_WEATHER=${VITE_API_KEY_WEATHER}
+
 # Install dependencies
 RUN npm install -g pnpm@10.5.2
 
@@ -11,6 +14,7 @@ RUN pnpm install --frozen-lockfile
 
 # Copy source and build
 COPY . .
+RUN test -n "$VITE_API_KEY_WEATHER"
 RUN pnpm build
 
 # Serve stage
