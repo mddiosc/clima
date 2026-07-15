@@ -54,9 +54,10 @@ const TemperatureChart = ({ forecastData }: TemperatureChartProps): React.JSX.El
 
   return (
     <div className="p-6">
-      <h3 className="text-xl font-semibold text-white mb-4 text-center">
-        Temperature Trend
-      </h3>
+
+
+
+      <h3 className="text-xl font-semibold text-white mb-4 text-center">Temperature Trend</h3>
       <ResponsiveContainer width="100%" height={280}>
         <LineChart data={chartData}>
           <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.15)" />
