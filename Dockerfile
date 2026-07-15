@@ -1,5 +1,5 @@
 # Build stage
-FROM node:20-alpine AS builder
+FROM node:22.23.1-alpine3.24 AS builder
 
 WORKDIR /app
 
@@ -9,7 +9,7 @@ ENV VITE_API_KEY_WEATHER=${VITE_API_KEY_WEATHER}
 # Install dependencies
 RUN npm install -g pnpm@10.5.2
 
-COPY package.json pnpm-lock.yaml ./
+COPY package.json pnpm-lock.yaml pnpm-workspace.yaml ./
 RUN pnpm install --frozen-lockfile
 
 # Copy source and build
@@ -18,7 +18,7 @@ RUN test -n "$VITE_API_KEY_WEATHER"
 RUN pnpm build
 
 # Serve stage
-FROM nginx:1.27-alpine
+FROM nginx:1.30.3-alpine3.23-slim
 
 # Remove default nginx config
 RUN rm /etc/nginx/conf.d/default.conf
